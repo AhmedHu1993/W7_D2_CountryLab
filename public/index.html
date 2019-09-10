@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Country Lab</title>
+    <script type="text/javascript" src="./js/bundle.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Countries</h1>
+        <h2>World Population:{{ population }} </h2>
+        <label for="countrySelect">Select Country:</label>
+        <select id="countrySelect" v-model ="selectedCountry">
+            <option v-for="(country, index) in countries" :value="country">{{country.name }} </option>
+        </select>
+        <button v-on:click="saveToFav">Add to Fav</button>
+        <h1>{{selectedCountry.name}}</h1>
+        <img :src="selectedCountry.flag" class="flag">
+
+        <ul>
+            <li v-for="country in favCountries"> {{country.name}}
+                 <img :src="country.flag" class="flag-icon"> </li>
+        </ul>
+    </div>
+</body>
+</html>

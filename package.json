@@ -1,0 +1,19 @@
+{
+  "name": "countries_lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
+  },
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
+}
