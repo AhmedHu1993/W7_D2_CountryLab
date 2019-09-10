@@ -7,18 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
            countries: [] ,
            selectedCountry: {},
            favCountries: [],
-           population: 0
+           totalPopulation: 0
         },
         mounted(){
-            this.fetchCountryName();
-            this.calculateTotalPopulation();
+            this.fetchCountries();
         },
         methods:{
-            fetchCountryName: function(){
+            fetchCountries: function(){
                 fetch("https://restcountries.eu/rest/v2/all")
-                .then(response => response.json())
-                .then(data => this.countries = data)
-                .catch(console.error);
+                    .then(response => response.json())
+                    .then(data => this.countries = data)
+                    .then(() => this.calculateTotalPopulation())
+                    .catch(console.error);
             },
             saveToFav: function(){
                 this.favCountries.push(this.selectedCountry)
@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 let totalPopu = 0
                 for (const country of this.countries) {
                     totalPopu += country.population
-                } this.population = totalPopu
+                }
+                this.totalPopulation = totalPopu
+                return totalPopu
             }
         }
     })
